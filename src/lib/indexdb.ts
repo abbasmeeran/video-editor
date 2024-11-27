@@ -12,12 +12,19 @@ export const indexDB: any = {
     return response;
   },
   getAll: async () => {
-    const videos: any = await db.allDocs();
+    const videos: any = await db.allDocs({
+      include_docs: true,
+      attachments: true,
+    });
     const data = await Promise.all(
-      videos.rows.map(async (v: any) => {
-        const video = db.get(v.id);
-        return video;
-      })
+      videos.rows
+        .map(async (v: any) => {
+          try {
+            return db.get(v.id);
+          } catch (err) {}
+          return null;
+        })
+        .filter((v: any) => v !== null)
     );
     return data;
   },
