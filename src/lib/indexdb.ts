@@ -17,16 +17,16 @@ export const indexDB: any = {
       attachments: true,
     });
     const data = await Promise.all(
-      videos.rows
-        .map(async (v: any) => {
-          try {
-            return db.get(v.id);
-          } catch (err) {}
-          return null;
-        })
-        .filter((v: any) => v !== null)
+      videos.rows.map(async (v: any) => {
+        try {
+          return await db.get(v.id);
+        } catch (err) {
+          console.log(err);
+        }
+        return null;
+      })
     );
-    return data;
+    return data.filter((v: any) => v !== null);
   },
   get: async (id: any) => {
     const video: any = await db.get(id);
