@@ -94,7 +94,7 @@ export default function VideoPage() {
                               type='button'
                               className='font-medium text-indigo-600 hover:text-indigo-500'
                             >
-                              {isRemoving ? 'Remove...' : 'Remove'}
+                              Remove
                             </button>
                           </Link>
                         </div>
