@@ -14,7 +14,7 @@ export default function ComponentsLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className='border-2 border-indigo-300'>
+    <div>
       <>{children}</>
     </div>
   );
