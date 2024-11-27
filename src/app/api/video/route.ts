@@ -6,7 +6,7 @@ export async function GET(request: Request) {
   const client = await clientPromise;
   const db = client.db('deepreel');
   const videos = await db.collection('videos').find({}).toArray();
-  return Response.json({ status: 200, data: videos });
+  return NextResponse.json({ status: 200, data: videos });
 }
 
 export async function POST(request: Request) {
